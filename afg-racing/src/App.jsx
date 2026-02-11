@@ -508,7 +508,8 @@ function App() {
                         </div>
                     </div>
                     <div className="footer-bottom">
-                        <p>&copy; 2024 AFG Racing. Todos los derechos reservados.</p>
+                        <p>&copy; 2026 AFG Racing. Todos los derechos reservados.</p>
+                        <p>&copy; desarrollado por <a href="https://codebywill.vercel.app/" target="_blank" rel="noopener noreferrer">CodeByWill</a>. Todos los derechos reservados.</p>
                     </div>
                 </div>
             </footer>
