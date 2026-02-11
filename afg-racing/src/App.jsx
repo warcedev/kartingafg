@@ -32,7 +32,7 @@ function App() {
             category: "AFG Racing",
             bio: "La juventud y el talento se combinan en Jose, ya es referente en las pistas, destacando por su consistencia y habilidad en condiciones adversas.",
             achievements: ["3 victorias en temporada", "Pole Position récord"],
-            image: "/public/jose.jpeg"
+            image: "/jose.jpeg"
         },
         {
             name: "Fernando Ferreira",
@@ -40,7 +40,7 @@ function App() {
             category: "AFG Racing",
             bio: "Fernando ha demostrado ser uno de los talentos más prometedores. Su dedicación y técnica lo han llevado a obtener múltiples podios en categorías nacionales.",
             achievements: ["2 podios consecutivos", "Vuelta rápida", "Titulo Campeon nacional de karting"],
-            image: "/public/fer.jpeg"
+            image: "/fer.jpeg"
         }
     ];
 
@@ -51,7 +51,7 @@ function App() {
             category: "AFG Racing Jr.",
             bio: "Manuel representa el futuro del equipo. Su progresión en karting ha sido excepcional, mostrando madurez y competitividad desde sus inicios.",
             achievements: ["Campeón Promesas 2024", "Mejor Novato"],
-            image: "/public/manu.jpeg"
+            image: "/manu.jpeg"
         },
         {
             name: "William Arce",
@@ -59,7 +59,7 @@ function App() {
             category: "AFG Racing Jr.",
             bio: "William combina velocidad e inteligencia en pista. Su capacidad de aprendizaje y adaptación lo posicionan como una gran promesa del equipo.",
             achievements: ["Subcampeón Junior", "Piloto Revelación"],
-            image: "/public/will.jpeg"
+            image: "/will.jpeg"
         }
     ];
 
@@ -68,13 +68,13 @@ function App() {
             name: "Fernando Javier Ferreira",
             role: "Manager Deportivo",
             bio: "Con más de 20 años de experiencia en el automovilismo, lidera la visión estratégica del equipo, gestionando el desarrollo deportivo y las alianzas comerciales.",
-            image: "/public/javier.jpeg"
+            image: "/javier.jpeg"
         },
         {
             name: "Fernando Ferreira",
             role: "Entrenador Principal",
             bio: "Ex piloto profesional convertido en entrenador. Su metodología de trabajo ha sido clave en el desarrollo de los pilotos del equipo.",
-            image: "/public/fer2.jpeg"
+            image: "/fer2.jpeg"
         }
     ];
 
@@ -132,7 +132,7 @@ function App() {
             <nav className="navbar">
                 <div className="nav-container">
                     <div className="logo-container">
-                        <img src="/public/afgprincipal.png" alt="AFG Racing" className="logo" />
+                        <img src="/afgprincipal.png" alt="AFG Racing" className="logo" />
                     </div>
                     <ul className="nav-menu">
                         <li><a href="#home">Inicio</a></li>
@@ -142,7 +142,7 @@ function App() {
                         <li><a href="#sponsors">Patrocinadores</a></li>
                         <li><a href="#contact">Contacto</a></li>
                     </ul>
-                    <a href="https://youtube.com/@AFGRacing" className="youtube-btn" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com/@AFGTEAM-PY" className="youtube-btn" target="_blank" rel="noopener noreferrer">
                         <Youtube size={20} />
                         <span>Nuestro Canal</span>
                     </a>
@@ -168,7 +168,7 @@ function App() {
                             Conocenos
                             <ChevronRight size={20} />
                         </a>
-                        <a href="https://youtube.com/@AFGRacing" className="btn-secondary" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.youtube.com/@AFGTEAM-PY" className="btn-secondary" target="_blank" rel="noopener noreferrer">
                             <Play size={20} />
                             Ver en YouTube
                         </a>
@@ -219,7 +219,7 @@ function App() {
                                 Síguenos en YouTube para vivir la experiencia AFG Racing desde adentro:
                                 prácticas, competencias, preparación y momentos únicos de nuestro día a día.
                             </p>
-                            <a href="https://youtube.com/@AFGRacing" className="youtube-cta" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.youtube.com/@AFGTEAM-PY" className="youtube-cta" target="_blank" rel="noopener noreferrer">
                                 Suscríbete a Nuestro Canal
                                 <ChevronRight size={18} />
                             </a>
@@ -421,7 +421,7 @@ function App() {
                                 <a href="#" className="social-link">
                                     <Twitter size={24} />
                                 </a>
-                                <a href="https://youtube.com/@AFGRacing" className="social-link" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.youtube.com/@AFGTEAM-PY" className="social-link" target="_blank" rel="noopener noreferrer">
                                     <Youtube size={24} />
                                 </a>
                             </div>
@@ -473,7 +473,7 @@ function App() {
                 <div className="container">
                     <div className="footer-content">
                         <div className="footer-logo">
-                            <img src="/public/afgprincipal.png" alt="AFG Racing" />
+                            <img src="/afgprincipal.png" alt="AFG Racing" />
                             <p>Más que velocidad, una familia</p>
                         </div>
                         <div className="footer-links">
@@ -485,7 +485,7 @@ function App() {
                             </div>
                             <div className="footer-column">
                                 <h4>Comunidad</h4>
-                                <a href="https://youtube.com/@AFGRacing" target="_blank" rel="noopener noreferrer">YouTube</a>
+                                <a href="https://www.youtube.com/@AFGTEAM-PY" target="_blank" rel="noopener noreferrer">YouTube</a>
                                 <a href="https://www.instagram.com/afg.racingteam/" target="_blank" rel="noopener noreferrer">Instagram</a>
                                 <a href="#">Twitter</a>
                             </div>
