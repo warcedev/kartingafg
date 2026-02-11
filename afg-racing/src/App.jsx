@@ -21,6 +21,7 @@ import {
     Linkedin
 } from 'lucide-react';
 import './App.css';
+import heroBackground from '/public/kartlejos.png';
 
 function App() {
     const formRef = useRef(null);
@@ -150,7 +151,16 @@ function App() {
             </nav>
 
             {/* Hero Section */}
-            <section id="home" className="hero">
+            <section
+                id="home"
+                className="hero"
+                style={{
+                    background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${heroBackground})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed'
+                }}
+            >
                 <div className="hero-overlay"></div>
                 <div className="hero-content">
                     <div className="hero-badge">
