@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
     Youtube,
     Trophy,
@@ -23,6 +23,8 @@ import {
 import './App.css';
 
 function App() {
+    const formRef = useRef(null);
+
     const mainTeam = [
         {
             name: "José Ferreira",
@@ -30,15 +32,15 @@ function App() {
             category: "AFG Racing",
             bio: "La juventud y el talento se combinan en Jose, ya es referente en las pistas, destacando por su consistencia y habilidad en condiciones adversas.",
             achievements: ["3 victorias en temporada", "Pole Position récord"],
-            image: "/src/assets/pilots/jose.jpeg"
+            image: "/public/jose.jpeg"
         },
         {
             name: "Fernando Ferreira",
             role: "Piloto Principal",
             category: "AFG Racing",
             bio: "Fernando ha demostrado ser uno de los talentos más prometedores. Su dedicación y técnica lo han llevado a obtener múltiples podios en categorías nacionales.",
-            achievements: ["2 podios consecutivos", "Vuelta rápida","Titulo Campeon nacional de karting"],
-            image: "/src/assets/pilots/fer.jpeg"
+            achievements: ["2 podios consecutivos", "Vuelta rápida", "Titulo Campeon nacional de karting"],
+            image: "/public/fer.jpeg"
         }
     ];
 
@@ -48,16 +50,16 @@ function App() {
             role: "Piloto Junior",
             category: "AFG Racing Jr.",
             bio: "Manuel representa el futuro del equipo. Su progresión en karting ha sido excepcional, mostrando madurez y competitividad desde sus inicios.",
-            achievements: [""],
-            image: "/src/assets/pilots/manu.jpeg"
+            achievements: ["Campeón Promesas 2024", "Mejor Novato"],
+            image: "/public/manu.jpeg"
         },
         {
             name: "William Arce",
             role: "Piloto Junior",
             category: "AFG Racing Jr.",
             bio: "William combina velocidad e inteligencia en pista. Su capacidad de aprendizaje y adaptación lo posicionan como una gran promesa del equipo.",
-            achievements: [""],
-            image: "/src/assets/pilots/will.jpeg"
+            achievements: ["Subcampeón Junior", "Piloto Revelación"],
+            image: "/public/will.jpeg"
         }
     ];
 
@@ -66,13 +68,13 @@ function App() {
             name: "Fernando Javier Ferreira",
             role: "Manager Deportivo",
             bio: "Con más de 20 años de experiencia en el automovilismo, lidera la visión estratégica del equipo, gestionando el desarrollo deportivo y las alianzas comerciales.",
-            image: "/src/assets/staff/javier.jpeg"
+            image: "/public/javier.jpeg"
         },
         {
             name: "Fernando Ferreira",
             role: "Entrenador Principal",
             bio: "Ex piloto profesional convertido en entrenador. Su metodología de trabajo ha sido clave en el desarrollo de los pilotos del equipo.",
-            image: "/src/assets/staff/fer.jpeg"
+            image: "/public/fer2.jpeg"
         }
     ];
 
@@ -99,13 +101,38 @@ function App() {
         }
     ];
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(formRef.current);
+        const nombre = formData.get('nombre');
+        const email = formData.get('email');
+        const asunto = formData.get('asunto');
+        const mensaje = formData.get('mensaje');
+
+        const destinatario = 'afg.racing@outlook.com';
+        const subject = encodeURIComponent(`[Contacto AFG Racing] ${asunto} - ${nombre}`);
+        const body = encodeURIComponent(
+            `NOMBRE: ${nombre}\n` +
+            `EMAIL: ${email}\n` +
+            `ASUNTO: ${asunto}\n\n` +
+            `MENSAJE:\n${mensaje}\n\n` +
+            `------------------------\n` +
+            `Enviado desde afgrace.com`
+        );
+
+        window.location.href = `mailto:${destinatario}?subject=${subject}&body=${body}`;
+
+        e.target.reset();
+    };
+
     return (
         <div className="app">
             {/* Header/Navigation */}
             <nav className="navbar">
                 <div className="nav-container">
                     <div className="logo-container">
-                        <img src="/src/assets/logos/afgprincipal.png" alt="AFG Racing" className="logo" />
+                        <img src="/public/afgprincipal.png" alt="AFG Racing" className="logo" />
                     </div>
                     <ul className="nav-menu">
                         <li><a href="#home">Inicio</a></li>
@@ -225,9 +252,9 @@ function App() {
                                     <div className="pilot-achievements">
                                         {pilot.achievements.map((achievement, i) => (
                                             <span key={i} className="achievement-tag">
-                        <Trophy size={12} />
+                                                <Trophy size={12} />
                                                 {achievement}
-                      </span>
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
@@ -261,9 +288,9 @@ function App() {
                                     <div className="pilot-achievements">
                                         {pilot.achievements.map((achievement, i) => (
                                             <span key={i} className="achievement-tag junior">
-                        <Star size={12} />
+                                                <Star size={12} />
                                                 {achievement}
-                      </span>
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
@@ -273,7 +300,7 @@ function App() {
                 </div>
             </section>
 
-            {/* Staff Section */}
+            {/* Staff Section - REDISEÑO CIRCULAR */}
             <section className="staff">
                 <div className="container">
                     <div className="section-header">
@@ -284,8 +311,10 @@ function App() {
                     <div className="staff-grid">
                         {staff.map((member, index) => (
                             <div key={index} className="staff-card">
-                                <div className="staff-image">
-                                    <img src={member.image} alt={member.name} />
+                                <div className="staff-image-wrapper">
+                                    <div className="staff-image">
+                                        <img src={member.image} alt={member.name} />
+                                    </div>
                                 </div>
                                 <div className="staff-content">
                                     <h3>{member.name}</h3>
@@ -359,7 +388,7 @@ function App() {
                 </div>
             </section>
 
-            {/* Contact Section */}
+            {/* Contact Section - CON MAILTO FUNCIONAL */}
             <section id="contact" className="contact">
                 <div className="container">
                     <div className="section-header">
@@ -381,30 +410,55 @@ function App() {
                                 </div>
                                 <div className="contact-item">
                                     <MapPin size={20} />
-                                    <span>Asuncion, Paraguay</span>
+                                    <span>Asunción, Paraguay</span>
                                 </div>
                             </div>
 
                             <div className="social-links">
-                                <a href="https://www.instagram.com/afg.racingteam/" className="social-link"><Instagram size={24} /></a>
-                                <a href="#" className="social-link"><Twitter size={24} /></a>
-                                <a href="#" className="social-link"><Youtube size={24} /></a>
-                                {/*<a href="#" className="social-link"><Linkedin size={24} /></a>*/}
+                                <a href="https://www.instagram.com/afg.racingteam/" className="social-link" target="_blank" rel="noopener noreferrer">
+                                    <Instagram size={24} />
+                                </a>
+                                <a href="#" className="social-link">
+                                    <Twitter size={24} />
+                                </a>
+                                <a href="https://youtube.com/@AFGRacing" className="social-link" target="_blank" rel="noopener noreferrer">
+                                    <Youtube size={24} />
+                                </a>
                             </div>
                         </div>
 
-                        <form className="contact-form">
+                        <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                             <div className="form-group">
-                                <input type="text" placeholder="Nombre completo" />
+                                <input
+                                    type="text"
+                                    name="nombre"
+                                    placeholder="Nombre completo"
+                                    required
+                                />
                             </div>
                             <div className="form-group">
-                                <input type="email" placeholder="Email" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    required
+                                />
                             </div>
                             <div className="form-group">
-                                <input type="text" placeholder="Asunto" />
+                                <input
+                                    type="text"
+                                    name="asunto"
+                                    placeholder="Asunto"
+                                    required
+                                />
                             </div>
                             <div className="form-group">
-                                <textarea placeholder="Mensaje" rows="5"></textarea>
+                                <textarea
+                                    name="mensaje"
+                                    placeholder="Mensaje"
+                                    rows="5"
+                                    required
+                                ></textarea>
                             </div>
                             <button type="submit" className="btn-submit">
                                 Enviar Mensaje
@@ -419,20 +473,20 @@ function App() {
                 <div className="container">
                     <div className="footer-content">
                         <div className="footer-logo">
-                            <img src="/src/assets/logos/afgprincipal.png" alt="AFG Racing" />
+                            <img src="/public/afgprincipal.png" alt="AFG Racing" />
                             <p>Más que velocidad, una familia</p>
                         </div>
                         <div className="footer-links">
                             <div className="footer-column">
                                 <h4>Equipo</h4>
                                 <a href="#team">Pilotos</a>
-                                <a href="#team-jr">AFG Junior</a>
+                                <a href="#team-junior">AFG Junior</a>
                                 <a href="#staff">Staff</a>
                             </div>
                             <div className="footer-column">
                                 <h4>Comunidad</h4>
-                                <a href="#">YouTube</a>
-                                <a href="https://www.instagram.com/afg.racingteam/">Instagram</a>
+                                <a href="https://youtube.com/@AFGRacing" target="_blank" rel="noopener noreferrer">YouTube</a>
+                                <a href="https://www.instagram.com/afg.racingteam/" target="_blank" rel="noopener noreferrer">Instagram</a>
                                 <a href="#">Twitter</a>
                             </div>
                             <div className="footer-column">
